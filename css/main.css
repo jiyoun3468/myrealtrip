@@ -625,8 +625,9 @@ main .smbg {
     margin-bottom: 50px;
     z-index: 7;
   }
-
-
+  .dropdown-item{
+    cursor: pointer;
+  }
   .travel_box .btn-primary {
     font-size: 12px;
   }
