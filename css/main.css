@@ -623,6 +623,7 @@ main .smbg {
   .leave_title .dropdown {
     display: block;
     margin-bottom: 50px;
+    z-index: 7;
   }
 
 
