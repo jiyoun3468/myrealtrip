@@ -38,7 +38,7 @@
   width: 100%;
   background-color: #C2DEF6;
   /* display: none; */
-  position: absolute;
+  position: fixed;
   top: -400px;
   z-index: 98;
 }
@@ -212,15 +212,25 @@ body {
 
 .header .menubox>.menu>li>a:hover {
   font-weight: 700;
+  display: block;
 }
 
 .header .menubox .subbox {
   width: 100%;
   height: 100px;
-  top: 101px;
+  top: 96px;
   left: 0;
   position: absolute;
+  background-color: #ffffffc5;
+  z-index: 2;
+  transition: 0.5s;
   display: none;
+
+}
+
+.header .menubox>.menu>li:hover .subbox {
+  display: block;
+  opacity: 1;
 }
 
 .header .menubox .submenu {
@@ -237,17 +247,12 @@ body {
   padding: 0 2%;
 }
 
-.header .menubox>.menu>li:hover .subbox {
-  background-color: #ffffffc5;
+.header .menubox .submenu li a {
   display: block;
 }
 
 .header .menubox .subbox .submenu a:hover {
   color: #438CCB;
-}
-
-.header .menubox .subbox:hover {
-  box-shadow: 2px;
 }
 
 @media screen and (max-width:1200px) {
@@ -267,14 +272,14 @@ body {
 }
 
 .menu_icon figure:nth-child(1) img {
-  margin-right: 25px;
+  margin-right: 24px;
 }
 
 .drop_menu {
   width: 100%;
-  height: 500px;
-  background-color: #fff;
-  position: absolute;
+  height: 600px;
+  background-color: #fffffff7;
+  position: fixed;
   top: -100%;
   left: 0;
   z-index: 99;
@@ -300,7 +305,6 @@ body {
 }
 
 .drop_menu .menu .sub {
-  margin-left: 20px;
   transition: 0.5s;
 }
 
@@ -311,12 +315,16 @@ body {
 .drop_menu .li a {
   display: block;
   width: 100px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 32px;
 }
 
 .drop_menu span {
   margin-left: 100px;
   display: none;
   color: #686868;
+  cursor: pointer;
 }
 
 .drop_menu span:hover {
@@ -361,7 +369,7 @@ body {
   }
 
   .drop_menu .menu .sub {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 
   .drop_menu .sub {
@@ -422,45 +430,69 @@ body {
 
 main {
   width: 100%;
-  max-width: 1920px;
+  height: 100vh;
   margin: auto;
   position: relative;
   margin-bottom: 150px;
-  margin-top: 100px
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item,
+.carousel-item img {
+  height: 100%;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.lgbg {
+  height: 100%;
+}
+
+main .textwrap {
+  width: 100%;
+  max-width: 1140px;
+  margin: auto;
 }
 
 main .textAll {
   width: 100%;
-  max-width: 1920px;
   position: absolute;
-  top: 20vw;
-  padding-left: 20vw;
+  top: 60%;
+  /* left: 50%; */
+  transform: translate(0, -60%);
 }
 
 main h2 {
+  margin: auto;
+  font-size: 48px;
+  margin-bottom: 32px;
+  line-height: 120%;
+  width: 100%;
   color: #fff;
-  font-size: 50px;
-  margin-bottom: 30px;
-  line-height: 150%;
 }
 
 main p {
-  font-size: 25px;
+  font-size: 24px;
   color: #fff;
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 32px;
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 72px;
 }
 
 .leave_title p {
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 900;
   color: #686868;
   text-align: center;
   padding-bottom: 40px;
+  cursor: pointer;
 }
 
 .leave_title p:hover {
@@ -504,16 +536,22 @@ h3 {
   border-radius: 20px;
   margin-bottom: 60px;
   font-size: 15px;
+  transition: 0.5s;
 }
 
-.travel_box .allbox:hover {
-  box-shadow: 5px 5px 20px #438CCB;
+.travel_box .allbox figure {
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
 }
 
-/* .allbox img{
-  width: 100%;
-  height: 274px;
-} */
+.travel_box .allbox figure img {
+  transition: 0.5s;
+}
+
+.travel_box .allbox:hover figure img {
+  transform: scale(1.1);
+}
+
 .leave_text {
   width: 100%;
   height: 176px;
@@ -549,26 +587,23 @@ main .smbg {
   display: none;
 }
 
-@media screen and (max-width:1200px) {
-  main .lgbg {
-    display: none;
+@media screen and (max-width:1500px) {
+  main .textAll {
+    left: 12%;
   }
 
-  main .smbg {
-    width: 100%;
-    display: block;
-  }
-  .travel_box .allbox{
+}
+
+@media screen and (max-width:1200px) {
+  .travel_box .allbox {
     height: 530px;
-  }
-  main .textAll {
-    top: 40vw;
   }
 }
 
 @media screen and (max-width:991px) {
   main .textAll {
-    padding-left: 15vw;
+    top: 56%;
+    transform: translate(0, -56%);
   }
 
   main .textAll h2 {
@@ -577,11 +612,8 @@ main .smbg {
 }
 
 @media screen and (max-width:767px) {
-  .travel_box .allbox{
+  .travel_box .allbox {
     height: 450px;
-  }
-  main .carousel-item img {
-    height: 100vw;
   }
 
   .leave_title .text {
@@ -593,18 +625,6 @@ main .smbg {
     margin-bottom: 50px;
   }
 
-  main .textAll {
-    top: 40vw;
-    padding: 0 13vw;
-  }
-
-  main .textAll h2 {
-    font-size: 36px;
-  }
-
-  .leave_text p {
-    font-size: 13px;
-  }
 
   .travel_box .btn-primary {
     font-size: 12px;
@@ -613,7 +633,6 @@ main .smbg {
   main h2 {
     font-size: 30px;
   }
-
 }
 
 @media screen and (max-width:575px) {
@@ -622,11 +641,11 @@ main .smbg {
   }
 
   main .textAll h2 {
-    font-size: 6vw;
+    font-size: 7vw;
   }
 
   main p {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .travel_box .allbox {
@@ -635,7 +654,8 @@ main .smbg {
     margin: auto;
     margin-bottom: 30px;
   }
-  .travel_box .allbox img{
+
+  .travel_box .allbox img {
     width: 100%;
   }
 
@@ -647,9 +667,18 @@ main .smbg {
     display: block;
   }
 }
-@media screen and (max-width:400px){
-  .travel_box .allbox{
+
+@media screen and (max-width:400px) {
+  .travel_box .allbox {
     height: 450px;
+  }
+
+  main h2 {
+    margin-bottom: 24px;
+  }
+
+  main p {
+    font-size: 14px;
   }
 }
 
@@ -668,22 +697,22 @@ main .smbg {
 }
 
 .sale .textall {
-  width: 80%;
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 20%;
+  transform: translate(0, -50%);
   color: #fff;
 }
 
 .sale .textall h4 {
-  font-size: 35px;
+  font-size: 34px;
   line-height: 150%;
   color: #fff;
-  margin-bottom: 4vw;
+  margin-bottom: 32px;
 }
 
 .sale .textall p {
-  font-size: 25px;
+  font-size: 24px;
 }
 
 .sale .up {
@@ -691,18 +720,8 @@ main .smbg {
 }
 
 @media screen and (max-width:991px) {
-  .sale .up {
-    width: 100%;
-    display: block;
-  }
-
-  .sale .box7 {
-    display: none;
-  }
-
   .sale img {
     width: 100%;
-    min-height: 300px;
   }
 
   .sale .textall h4 {
@@ -713,7 +732,8 @@ main .smbg {
     font-size: 20px;
   }
 }
-@media screen and (max-width:767px){
+
+@media screen and (max-width:767px) {
   .sale .textall h4 {
     font-size: 25px;
   }
@@ -721,27 +741,25 @@ main .smbg {
   .sale .textall p {
     font-size: 15px;
   }
-
 }
 
-@media screen and (max-width:575px) {
-  .sale img {
-    min-height: 250px;
+@media screen and (max-width:576px){
+  .sale .textall {
+    left: 14%;
   }
-}
-
+} 
 @media screen and (max-width:400px) {
   .sale img {
-    min-height: 200px;
+    min-height: 300px;
   }
-    .sale .textall h4 {
-    font-size: 3.6vw;
+
+  .sale .textall h4 {
+    font-size: 6vw;
   }
 
   .sale .textall p {
-    font-size: 3.3vw;
+    font-size: 14px;
   }
-
 }
 
 .event {
@@ -758,16 +776,21 @@ main .smbg {
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
+  border-radius: 20px;
+
 }
 
 .event figure {
-  border-radius: 30px;
+  border-radius: 20px;
   overflow: hidden;
 }
 
 .event img {
   width: 100%;
-  /* height: 400px; */
+}
+
+.event img {
+  transition: 0.5s;
 }
 
 .event img:hover {
@@ -778,15 +801,16 @@ main .smbg {
   width: 100%;
   position: absolute;
   top: 250px;
-  padding: 0 10%;
+  padding: 0 6%;
   text-shadow: 1px 1px 2px #555;
 }
 
 .event .text h5 {
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   margin-bottom: 20px;
+  word-break: keep-all;
 }
 
 .event .text p {
@@ -800,7 +824,7 @@ main .smbg {
 
 @media screen and (max-width:1200px) {
   .event .text {
-    top: 70%;
+    top: 60%;
   }
 }
 
@@ -810,18 +834,29 @@ main .smbg {
     margin-top: 50px;
   }
 }
-@media screen and (max-width:767px){
-  .none5{
+
+@media screen and (max-width:767px) {
+  .none5 {
     display: none;
   }
 }
+
 @media screen and (max-width:576px) {
   .event .img_none {
     display: none;
   }
 
   h3 {
-    font-size: 25px;
+    font-size: 24px;
+  }
+
+  .event .text {
+    top: 70%;
+  }
+  .event .imgall{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 30px;
   }
 }
 
@@ -844,15 +879,18 @@ main .smbg {
 }
 
 .information .line {
-  margin-bottom: 100px;
+  margin-bottom: 32px;
 }
 
 .information .line li {
   border-bottom: 1px solid #D9D9D9;
-  line-height: 400%;
+  height: 76px;
 }
 
 .information .line li a {
+  width: 100%;
+  height: 100%;
+  display: block;
   padding: 0 3%;
   display: flex;
   justify-content: space-between;
@@ -880,13 +918,6 @@ main .smbg {
   align-items: center;
 }
 
-/* .information .box {
-  width: 100%;
-  max-width: calc(100% / 3 - 50px);
-  margin-bottom: 20px;
-  margin: 0 3%;
-} */
-
 .information .icon {
   width: 100px;
   height: 100px;
@@ -907,11 +938,15 @@ main .smbg {
 }
 
 @media screen and (max-width:991px) {
-  .information{
+  .information .box p {
+    text-align: center;
+  }
+  .information {
     height: 840px;
     margin-bottom: 0;
   }
-  .Travel_information_allbox{
+
+  .Travel_information_allbox {
     width: 100%;
     height: 300px;
   }
@@ -921,7 +956,8 @@ main .smbg {
   .f_menu {
     margin-bottom: 100px;
   }
-  .client{
+
+  .client {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -937,28 +973,32 @@ main .smbg {
     margin: auto;
 
   }
-  .information .icon{
+
+  .information .icon {
     margin: auto;
   }
-  .information .box {
-    width: 100%;
-    max-width: calc(100% / 3 - 50px);
-    margin-bottom: 20px;
+
+  .information .box:nth-child(2){
     margin: 0 5%;
   }
+
   .Travel_information .box>a {
     display: block;
   }
-  .Travel_information{
+
+  .Travel_information {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+footer .icon a:nth-child(1){
+  margin-left: 0;
 }
-@media screen and (max-width:575px){
-  .client{
-    /* align-items:flex-start; */
+}
+
+@media screen and (max-width:575px) {
+  .client {
     flex-direction: column;
     align-items: stretch;
   }
@@ -993,7 +1033,7 @@ main .smbg {
 
 .consult {
   width: 100%;
-  background-color: #C2DEF6;
+  background-color: #c2def663;
 }
 
 .consult .container .row {
@@ -1078,7 +1118,7 @@ footer .icon {
   justify-content: flex-end;
 }
 
-footer .icon img {
+footer .icon a {
   margin-left: 20px;
 }
 
