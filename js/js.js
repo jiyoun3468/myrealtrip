@@ -1,47 +1,54 @@
-/*돋보기누르면 서치박스 열고
-  닫기 버튼 누르면 사라짐*/ 
-
   $(function(){
-
-
     $(".i_search").click(function(){
       $(".s_allbox").stop().animate({
         top: '100px'
-      },1000)
+      },500)
     })
   
     $(".search_close").click(function(){
       $(".s_allbox").stop().animate({
         top: '-400px'
-      },1000)
+      },500)
     })
   
   
     $(".bar").click(function(){
       $(".drop_menu").stop().animate({
         top:'0'
-      },1000)
+      },500)
     })
     
     $(".search_close_b").click(function(){
       $(".drop_menu").stop().animate({
         top:'-100%'
-      },1000)
+      },500)
     })
     $(".drop_menu .li").click(function(){
       let subMenu = $(this).siblings(".sub");
-      
-      // sub의 현재 상태 확인
+      let toggle = $(this).find("span");
+  
       if (subMenu.css("display") === "none") {
-          // 모든 sub를 숨김
+          // 모든 sub 메뉴 숨기기 및 span 텍스트 초기화
           $(".drop_menu .sub").css("display", "none");
-          // 현재 클릭된 span에 대응하는 sub를 표시
+          $(".drop_menu .li span").text("+");
+          $(".drop_menu .li").css("color", ""); // li 색상 초기화
+          $(".drop_menu .li span").css("color", ""); // span 색상 초기화
+  
+          // 클릭된 메뉴만 표시하고 span 텍스트 변경 및 색상 변경
           subMenu.css("display", "block");
+          toggle.text("-");
+          $(this).css("color", "#438CCB"); // li 색상 변경
+          toggle.css("color", "#438CCB"); // span 색상 변경
       } else {
-          // 현재 클릭된 span에 대응하는 sub를 숨김
+          // 클릭된 메뉴 숨기기 및 span 텍스트 초기화 및 색상 복원
           subMenu.css("display", "none");
+          toggle.text("+");
+          $(this).css("color", ""); // li 색상 초기화
+          toggle.css("color", ""); // span 색상 초기화
       }
   });
+  
+  
     
   
     $(".n1").on({
@@ -162,6 +169,8 @@
       }
     })
   
+
+  AOS.init();
     ////
   })
   
